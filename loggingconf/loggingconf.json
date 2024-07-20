@@ -1,0 +1,38 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "simple": {
+            "format": "%(asctime)s [%(levelname)s] %(filename)s:%(lineno)s %(funcName)s: %(message)s"
+        }
+    },
+    "handlers": {
+        "consoleHandler": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "simple",
+            "stream": "ext://sys.stdout"
+        },
+        "timeRotatingFileHandler": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "level": "DEBUG",
+            "formatter": "simple",
+            "filename": "log/ds-oop.log",
+            "encoding": "utf-8",
+            "when": "D",
+            "backupCount": 8
+        }
+    },
+    "loggers": {
+        "formatLogger": {
+            "level": "DEBUG",
+            "handlers": [
+                "consoleHandler",
+                "timeRotatingFileHandler"
+            ]
+        }
+    },
+    "root": {
+        "level": "ERROR"
+    }
+}
